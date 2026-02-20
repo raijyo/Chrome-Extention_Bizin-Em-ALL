@@ -2,6 +2,17 @@
   const STORAGE_KEY = "enabled";
   const STYLE_ID = "bizin-em-all-style";
   const FONT_STACK = '"Bizin Gothic", "BIZ UDGothic", "BIZ UDPGothic", "Yu Gothic UI", "Yu Gothic", sans-serif';
+  const ICON_CLASS_EXCLUSION = [
+    ":not(.material-icons)",
+    ":not(.material-icons-outlined)",
+    ":not(.material-icons-round)",
+    ":not(.material-icons-rounded)",
+    ":not(.material-icons-sharp)",
+    ":not(.material-icons-two-tone)",
+    ":not(.material-symbols-outlined)",
+    ":not(.material-symbols-rounded)",
+    ":not(.material-symbols-sharp)"
+  ].join("");
 
   function getStyleElement() {
     return document.getElementById(STYLE_ID);
@@ -16,10 +27,43 @@
     style.id = STYLE_ID;
     style.textContent = `
       :root,
-      :root *,
-      :root *::before,
-      :root *::after {
+      :root *${ICON_CLASS_EXCLUSION},
+      :root *${ICON_CLASS_EXCLUSION}::before,
+      :root *${ICON_CLASS_EXCLUSION}::after {
         font-family: ${FONT_STACK} !important;
+      }
+
+      .material-icons {
+        font-family: "Material Icons" !important;
+      }
+
+      .material-icons-outlined {
+        font-family: "Material Icons Outlined" !important;
+      }
+
+      .material-icons-round,
+      .material-icons-rounded {
+        font-family: "Material Icons Round" !important;
+      }
+
+      .material-icons-sharp {
+        font-family: "Material Icons Sharp" !important;
+      }
+
+      .material-icons-two-tone {
+        font-family: "Material Icons Two Tone" !important;
+      }
+
+      .material-symbols-outlined {
+        font-family: "Material Symbols Outlined" !important;
+      }
+
+      .material-symbols-rounded {
+        font-family: "Material Symbols Rounded" !important;
+      }
+
+      .material-symbols-sharp {
+        font-family: "Material Symbols Sharp" !important;
       }
     `;
 
